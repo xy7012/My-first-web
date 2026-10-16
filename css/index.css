@@ -1,0 +1,130 @@
+*{
+    margin: 0;
+    background-color: #fff;
+    padding: 0;
+}
+body{
+    width: 50%;
+    margin: 0 auto;
+    font-size: 16px;
+    line-height:3;
+}
+
+/* header 开始 */
+header img{
+    margin: 0 350px;
+    height: 200px;
+}
+header nav ul{
+    height: 48px;
+    background-color: cornflowerblue;
+    border-radius: 10px;
+}
+header nav ul li{
+    font-size: 20px;
+    list-style-type: none;
+    float: left;
+    margin: 0 38px;
+    line-height: 2;
+    background-color: cornflowerblue;
+}
+header nav ul li a:link{
+    color: #fff;
+    text-decoration: none;
+    background-color: cornflowerblue;
+}
+header nav ul li a:visited{
+    color: #fff;
+    text-decoration: none;
+    background-color: cornflowerblue;
+}
+header nav ul li a:hover{
+    color:#fff;
+    cursor: url(../images/link.cur),pointer;
+}
+/* header 结束 */
+
+/* twonav 开始 */
+.twonav{
+    margin-top: 250px;
+    color: cornflowerblue;
+    left: 50px;
+    position: fixed;
+    line-height:2;
+}
+.twonav a:link{
+    color: cornflowerblue;
+    text-decoration:none;
+}
+.twonav a:visited{
+    color:cornflowerblue;
+}
+.twonav a:hover{
+    font-size: 18px;
+    color: rgb(59, 107, 195);
+    text-decoration: underline;
+    cursor: url(../images/link.cur),pointer;
+}
+/* twonav 结束 */ 
+
+/* main 开始 */
+main p{
+    text-indent: 3em;
+    line-height: 2;
+}
+main ol{
+    margin-left: 80px;
+}
+main .img1{
+    width: 60%;
+    margin: 0 150px;
+    height: 300px;
+}
+/* main 结束 */
+
+/* back home 开始*/
+.backhome{
+    position: fixed;
+    right: 100px;
+    bottom: 60px;
+    width: 54px;
+    height: 54px;
+}
+/* back home 结束 */
+
+/* 局部通用 开始 */
+main h2{
+    margin-top: 60px;
+    font-size: 30px;
+}
+.gengduo{
+    color: #918e8e;
+    float: right;
+}
+.gengduo a:link{
+    color: #ccc;
+    text-decoration: none;
+}
+.gengduo a:visited{
+    color: #918e8e;
+    text-decoration: none;
+}
+.gengduo a:hover{
+    color: #000;
+    text-decoration: underline;
+    cursor: url(../images/link.cur),pointer;
+}
+
+/* 局部通用 结束 */
+
+/* footer 开始 */
+footer{
+    margin-top: 80px;
+}
+footer p{
+    color: #000;
+    text-align: center;
+    font-size:12px;
+    line-height: 3;
+}
+/* footer 结束 */

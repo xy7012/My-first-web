@@ -1,0 +1,104 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    width: 50%;
+    margin: 0 auto;
+    font-size: 16px;
+    line-height:3;
+}
+
+/* index 开始 */
+.index img{
+    margin: 0 350px;
+    height: 200px;
+}
+.index nav ul{
+    height: 48px;
+    background-color: cornflowerblue;
+    border-radius: 10px;
+}
+.index nav ul li{
+    font-size: 20px;
+    list-style-type: none;
+    float: left;
+    margin: 0 38px;
+    line-height: 2;
+    background-color: cornflowerblue;
+}
+.index nav ul li a:link{
+    color: #fff;
+    text-decoration: none;
+    background-color: cornflowerblue;
+}
+.index nav ul li a:visited{
+    color: #fff;
+    text-decoration: none;
+    background-color: cornflowerblue;
+}
+.index nav ul li a:hover{
+    color:#fff;
+    cursor: url(../images/link.cur),pointer;
+}
+/* index 结束 */
+
+/* header 开始 */
+header h1{
+    margin-top: 50px;
+    text-align:center;
+    margin-bottom: 15px;
+    line-height:2;
+}
+header #op{
+    color: rgb(168, 164, 164);
+    text-indent: 1em;
+    line-height:1;
+    margin-bottom: 10px;
+    text-align:center;
+}
+/* header 结束 */
+
+/* main 开始 */
+main{
+    margin-top:50px;
+}
+main ul li{
+    text-indent: 4em;
+    line-height: 3;
+    list-style-type: none;
+}
+main video{
+    height: 400px;
+    width: 80%;
+    margin-left: 90px;
+    margin-right: 90px;
+}
+main ul img{
+    width: 80%;
+    height: 400px;
+    margin: 0 90px;
+}
+/* main 结束 */
+
+/* back home 开始*/
+.backhome{
+    position: fixed;
+    right: 100px;
+    bottom: 60px;
+    width: 54px;
+    height: 54px;
+}
+/* back home 结束 */
+
+/* footer 开始 */
+footer{
+    margin-top: 80px;
+}
+footer p{
+    color: #000;
+    text-align: center;
+    font-size:12px;
+    line-height: 3;
+}
+/* footer 结束 */

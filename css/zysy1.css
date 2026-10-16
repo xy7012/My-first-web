@@ -1,0 +1,75 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    width: 50%;
+    margin: 0 auto;
+    font-size: 16px;
+    line-height:3;
+}
+h1 a:link{
+    font-size: 16px;
+    color: #ccc;
+    text-decoration: none;
+}
+h1 a:visited{
+    font-size: 16px;
+    color: #ccc;
+}
+h1 a:hover{
+    font-size: 18px;
+    color: #888585;
+    text-decoration: underline;
+    cursor: url(../images/link.cur),pointer;
+}
+h2{
+    text-align: center;
+}
+p{
+    text-indent: 2em;
+}
+p a:link{
+    color: cornflowerblue;
+    text-decoration: none;
+}
+p a:visited{
+    color: cornflowerblue;
+    text-decoration: none;
+}
+p a:hover{
+    color:  rgb(59, 107, 195);
+    font-size: 18px;
+    text-decoration: underline;
+    cursor: url(../images/link.cur),pointer;
+}
+img{
+    width: 80%;
+    height: 10%;
+    margin: 20px 100px 10px 100px;
+}
+ul{
+    margin-left: 70px;
+    list-style-type: square;
+}
+/* back home 开始*/
+.backhome{
+    position: fixed;
+    right: 20px;
+    bottom: 40px;
+    width: 54px;
+    height: 54px;
+}
+/* back home 结束 */
+
+/* footer 开始 */
+footer{
+    margin-top: 80px;
+}
+footer p{
+    color: #000;
+    text-align: center;
+    font-size:12px;
+    line-height: 3;
+}
+/* footer 结束 */

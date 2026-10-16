@@ -1,0 +1,100 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    width: 50%;
+    margin: 0 auto;
+    font-size: 16px;
+    line-height:3;
+}
+/* twonav 开始 */
+.twonav{
+    color: cornflowerblue;
+    left: 50px;
+    position: fixed;
+    line-height:2;
+    margin-top:450px;
+}
+.twonav a:link{
+    color: cornflowerblue;
+    text-decoration:none;
+}
+.twonav a:visited{
+    color:cornflowerblue;
+}
+.twonav a:hover{
+    font-size: 18px;
+    color: rgb(59, 107, 195);
+    text-decoration: underline;
+    cursor: url(../images/link.cur),pointer;
+}
+/* twonav 结束 */ 
+
+h1 a:link{
+    font-size: 16px;
+    color: #ccc;
+    text-decoration: none;
+}
+h1 a:visited{
+    font-size: 16px;
+    color: #ccc;
+}
+h1 a:hover{
+    font-size: 18px;
+    color: #888585;
+    text-decoration: underline;
+    cursor: url(../images/link.cur),pointer;
+}
+h2{
+    text-align: center;
+}
+h2 a:link{
+    color: cornflowerblue;
+    font-size: 16px;
+    text-decoration: none;
+}
+h2 a:visited{
+    color: rgb(59, 107, 195);
+    font-size: 16px;
+    text-decoration: none;
+}
+h2 a:hover{
+    color: cornflowerblue;
+    font-size: 18px;
+    text-decoration: underline;
+    cursor: url(../images/link.cur),pointer;
+}
+img{
+    width: 50%;
+    height: 40%;
+    margin: 0 200px;
+}
+video{
+    margin: 20px auto;
+    width: 60%;
+    height: 50%;
+    margin: 0 160px;
+}
+
+/* back home 开始*/
+.backhome{
+    position: fixed;
+    right: -70px;
+    bottom: 40px;
+    width: 54px;
+    height: 54px;
+}
+/* back home 结束 */
+
+/* footer 开始 */
+footer{
+    margin-top: 80px;
+}
+footer p{
+    color: #000;
+    text-align: center;
+    font-size:12px;
+    line-height: 3;
+}
+/* footer 结束 */

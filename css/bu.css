@@ -1,0 +1,46 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    width: 50%;
+    margin: 0 auto;
+    font-size: 16px;
+    line-height:3;
+}
+h1 a:link{
+    font-size: 16px;
+    color: #ccc;
+    text-decoration: none;
+}
+h1 a:visited{
+    font-size: 16px;
+    color: #ccc;
+}
+h1 a:hover{
+    font-size: 18px;
+    color: #888585;
+    text-decoration: underline;
+}
+#bu h2{
+    text-align: center;
+}
+#bu p{
+    text-indent: 2em;
+}
+img{
+    width: 80%;
+    height: 10%;
+    margin: 20px 100px 10px 100px;
+}
+/* footer 开始 */
+footer{
+    margin-top: 80px;
+}
+footer p{
+    color: #000;
+    text-align: center;
+    font-size:12px;
+    line-height: 3;
+}
+/* footer 结束 */

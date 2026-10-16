@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>冲天浪际</title>
+    <link rel="icon" href="../images/logo2.png" type="image/png">
+    <link rel="stylesheet" href="../css/zyss.css">
+</head>
+<body>
+    <!--index 开始-->
+    <div class="index">
+        <img src="../images/logo.png" alt="冲天浪际" title="冲天浪际">
+        <nav>
+            <ul>
+                <li><a href="../index.html">首页</a></li>
+                <li><a href="../files/fzls.html">发展历史</a></li>
+                <li><a href="../files/bsgz.html">规则与礼仪</a></li>
+                <li><a href="../files/zysy.html">专业术语</a></li>
+                <li><a href="../files/zyss.html">主要赛事</a></li>
+                <li><a href="../files/dbrw.html">代表人物</a></li>
+            </ul>
+        </nav>
+    </div>
+    <!--index 结束-->
+    
+    <!--header 开始-->
+    <header>
+        <h1>主要赛事</h1>
+        <p id="op">2024-4-23&nbsp;&nbsp;来源：网络</p>
+        <hr [color="#ccc"]/>
+    </header>
+    <!--header 结束-->
+
+    <!--twonav 开始-->
+    <nav class="twonav">
+        <h2>主要赛事</h2>
+        <ol>
+            <li><a href="#sj" title="了解更多">世界冲浪竞标赛</a></li>
+            <li><a href="#yz" title="了解更多">亚洲暨全国冲浪锦标赛</a></li>
+            <li><a href="#qg" title="了解更多">全国冲浪冠军赛</a></li>
+        </ol>
+    </nav>
+    <!--twonav 结束-->
+
+    <!--main 开始-->
+    <main>
+        <!--放点视频-->
+        <h2 id="sj">世界冲浪竞标赛</h2>
+        <p>首届世界冲浪锦标赛于1962年在澳大利亚的曼利举行其后每两年举行一次比赛。比赛土安拍动内油个浪或45分钟内冲6个浪，再根据冲很运20分制进行评分，如在30分钟内冲3个浪或45分钟内冲6个浪，再根据冲浪运动员冲浪的起滑、转弯、滑行距离和选择浪的难易程度等进行评分。</p>
+        <img src="../images/7.jpg" alt="世界冲浪竞标赛" title="世界冲浪竞标赛">
+        <h2 id="yz">亚洲暨全国冲浪锦标赛</h2>
+        <p>2019首届亚洲暨全国冲浪锦标赛19日在广东汕头南澳岛开幕，8个国家和地区的数百位运动员、教练员参加开幕式。比赛分男子长板、男子短板、女子长板、女子短板和U20男、女短板等项目。 </p>
+        <img src="../images/8.jpg" alt="亚洲暨全国冲浪锦标赛" title="亚洲暨全国冲浪锦标赛">
+        <h2 id="qg">全国冲浪冠军赛</h2>
+        <p>全国冲浪冠军赛，由国家体育总局水上运动管理中心、汕头市人民政府主办。赛事设男、女子18岁以下组长板、短板，公开组长板、短板以及团队接力等项目。</p>
+        <img src="../images/14.webp" alt="全国冲浪冠军赛" title="全国冲浪冠军赛">
+    </main>
+    <!--main 结束-->
+
+    <!--back home 开始-->
+    <a href="#top"><img src="../images/top.png" alt="返回顶部" title="返回顶部" class="backhome"></a>
+    <!--back home 结束-->
+
+<!--特效 开始-->
+<script>
+    function clickEffect() {
+      let balls = [];
+      let longPressed = false;
+      let longPress;
+      let multiplier = 0;
+      let width, height;
+      let origin;
+      let normal;
+      let ctx;
+      const colours = ["#3F48CC", "#00A2E8", "#99D9EA", "#172DEA", "#32B1EA"];
+      const canvas = document.createElement("canvas");
+      document.body.appendChild(canvas);
+      canvas.setAttribute("style", "width: 100%; height: 100%; top: 0; left: 0; z-index: 99999; position: fixed; pointer-events: none;");
+      const pointer = document.createElement("span");
+      pointer.classList.add("pointer");
+      document.body.appendChild(pointer);
+     
+      if (canvas.getContext && window.addEventListener) {
+        ctx = canvas.getContext("2d");
+        updateSize();
+        window.addEventListener('resize', updateSize, false);
+        loop();
+        window.addEventListener("mousedown", function(e) {
+          pushBalls(randBetween(10, 20), e.clientX, e.clientY);
+          document.body.classList.add("is-pressed");
+          longPress = setTimeout(function(){
+            document.body.classList.add("is-longpress");
+            longPressed = true;
+          }, 500);
+        }, false);
+        window.addEventListener("mouseup", function(e) {
+          clearInterval(longPress);
+          if (longPressed == true) {
+            document.body.classList.remove("is-longpress");
+            pushBalls(randBetween(50 + Math.ceil(multiplier), 100 + Math.ceil(multiplier)), e.clientX, e.clientY);
+            longPressed = false;
+          }
+          document.body.classList.remove("is-pressed");
+        }, false);
+        window.addEventListener("mousemove", function(e) {
+          let x = e.clientX;
+          let y = e.clientY;
+          pointer.style.top = y + "px";
+          pointer.style.left = x + "px";
+        }, false);
+      } else {
+        console.log("canvas or addEventListener is unsupported!");
+      }
+     
+     
+      function updateSize() {
+        canvas.width = window.innerWidth * 2;
+        canvas.height = window.innerHeight * 2;
+        canvas.style.width = window.innerWidth + 'px';
+        canvas.style.height = window.innerHeight + 'px';
+        ctx.scale(2, 2);
+        width = (canvas.width = window.innerWidth);
+        height = (canvas.height = window.innerHeight);
+        origin = {
+          x: width / 2,
+          y: height / 2
+        };
+        normal = {
+          x: width / 2,
+          y: height / 2
+        };
+      }
+      class Ball {
+        constructor(x = origin.x, y = origin.y) {
+          this.x = x;
+          this.y = y;
+          this.angle = Math.PI * 2 * Math.random();
+          if (longPressed == true) {
+            this.multiplier = randBetween(14 + multiplier, 15 + multiplier);
+          } else {
+            this.multiplier = randBetween(6, 12);
+          }
+          this.vx = (this.multiplier + Math.random() * 0.5) * Math.cos(this.angle);
+          this.vy = (this.multiplier + Math.random() * 0.5) * Math.sin(this.angle);
+          this.r = randBetween(8, 12) + 3 * Math.random();
+          this.color = colours[Math.floor(Math.random() * colours.length)];
+        }
+        update() {
+          this.x += this.vx - normal.x;
+          this.y += this.vy - normal.y;
+          normal.x = -2 / window.innerWidth * Math.sin(this.angle);
+          normal.y = -2 / window.innerHeight * Math.cos(this.angle);
+          this.r -= 0.3;
+          this.vx *= 0.9;
+          this.vy *= 0.9;
+        }
+      }
+     
+      function pushBalls(count = 1, x = origin.x, y = origin.y) {
+        for (let i = 0; i < count; i++) {
+          balls.push(new Ball(x, y));
+        }
+      }
+     
+      function randBetween(min, max) {
+        return Math.floor(Math.random() * max) + min;
+      }
+     
+      function loop() {
+        ctx.fillStyle = "rgba(255, 255, 255, 0)";
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        for (let i = 0; i < balls.length; i++) {
+          let b = balls[i];
+          if (b.r < 0) continue;
+          ctx.fillStyle = b.color;
+          ctx.beginPath();
+          ctx.arc(b.x, b.y, b.r, 0, Math.PI * 2, false);
+          ctx.fill();
+          b.update();
+        }
+        if (longPressed == true) {
+          multiplier += 0.2;
+        } else if (!longPressed && multiplier >= 0) {
+          multiplier -= 0.4;
+        }
+        removeBall();
+        requestAnimationFrame(loop);
+      }
+     
+      function removeBall() {
+        for (let i = 0; i < balls.length; i++) {
+          let b = balls[i];
+          if (b.x + b.r < 0 || b.x - b.r > width || b.y + b.r < 0 || b.y - b.r > height || b.r < 0) {
+            balls.splice(i, 1);
+          }
+        }
+      }
+    }
+    clickEffect();//调用特效函数
+    </script>
+    <!--特效 结束-->
+
+    <!--footer 开始-->
+    <footer>
+        <hr [color="#ccc"]/>
+        <p>新华社主办 版权所有：天河高级中学网络2301戴韵熙 Copyright © 2000 - 2024 XINHUANET.com All Rights Reserved.</p>
+        <P>广州市天河职业高级中学©戴韵熙编辑</P>
+    </footer>
+    <!--footer 结束-->
+</body>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>冲天浪际</title>
+    <link rel="icon" href="../images/logo2.png" type="image/png">
+    <link rel="stylesheet" href="../css/zysy1.css">
+</head>
+<body>
+    <h1><a href="../files/zysy.html">&lt返回</a></h1>
+    <!--cjhj 开始-->
+    <div id="cjhj">
+        <h2>冲浪场景和环境</h2>
+        <ul>
+            <li>海浪(Wave)：海浪是冲浪运动的基本要素，它是由风力、潮汐、海底地形等因素共同作用形成的水面波动</li>
+            <li>浪高(Wave Height)：浪高是指海浪的垂直高度，通常用英尺或米来表示，浪高的大小直接影响到冲浪的难度和危险程度</li>
+            <li>浪型(Wave Shape)：浪型是指海浪的形状，可以是平滑的、尖锐的、空心的等等，不同的浪型对冲浪的技巧和动作要求有所不同</li>
+            <li>白浪/浪花(White water)</li>
+            <li>浪壁(Shoulder)</li>
+            <img src="../images/l/ghl.png" alt="海浪" title="海浪">
+            <li>浪速(Wave Speed)：浪速是指海浪前进的速度，通常用秒/米来表示，浪速的快慢会影响到冲浪的节奏和运动员的速度控制</li>
+            <li>海浪的方向(Wave Direction)：海浪的方向是指海浪的传播方向，通常用角度来表示，不同的海浪方向对冲浪的线路和技巧有所影响</li>
+            <li>涨潮(High Tide)</li>
+            <li>退潮(Low Tide)</li>
+            <li>离岸风(Offshore Wind)：岸上吹向海里的风</li>
+            <li>向岸风(Onshore Wind)：由海面吹响岸上的风</li>
+            <li>好浪(Outside)：注意远方即将来大浪、好浪</li>
+            <li>靠近岸边的浪(Shore Break)</li>
+        </ul>
+    </div>
+    <!--cjhj 结束-->
+
+    <!--特效 开始-->
+  <script>
+    function clickEffect() {
+      let balls = [];
+      let longPressed = false;
+      let longPress;
+      let multiplier = 0;
+      let width, height;
+      let origin;
+      let normal;
+      let ctx;
+      const colours = ["#3F48CC", "#00A2E8", "#99D9EA", "#172DEA", "#32B1EA"];
+      const canvas = document.createElement("canvas");
+      document.body.appendChild(canvas);
+      canvas.setAttribute("style", "width: 100%; height: 100%; top: 0; left: 0; z-index: 99999; position: fixed; pointer-events: none;");
+      const pointer = document.createElement("span");
+      pointer.classList.add("pointer");
+      document.body.appendChild(pointer);
+     
+      if (canvas.getContext && window.addEventListener) {
+        ctx = canvas.getContext("2d");
+        updateSize();
+        window.addEventListener('resize', updateSize, false);
+        loop();
+        window.addEventListener("mousedown", function(e) {
+          pushBalls(randBetween(10, 20), e.clientX, e.clientY);
+          document.body.classList.add("is-pressed");
+          longPress = setTimeout(function(){
+            document.body.classList.add("is-longpress");
+            longPressed = true;
+          }, 500);
+        }, false);
+        window.addEventListener("mouseup", function(e) {
+          clearInterval(longPress);
+          if (longPressed == true) {
+            document.body.classList.remove("is-longpress");
+            pushBalls(randBetween(50 + Math.ceil(multiplier), 100 + Math.ceil(multiplier)), e.clientX, e.clientY);
+            longPressed = false;
+          }
+          document.body.classList.remove("is-pressed");
+        }, false);
+        window.addEventListener("mousemove", function(e) {
+          let x = e.clientX;
+          let y = e.clientY;
+          pointer.style.top = y + "px";
+          pointer.style.left = x + "px";
+        }, false);
+      } else {
+        console.log("canvas or addEventListener is unsupported!");
+      }
+     
+     
+      function updateSize() {
+        canvas.width = window.innerWidth * 2;
+        canvas.height = window.innerHeight * 2;
+        canvas.style.width = window.innerWidth + 'px';
+        canvas.style.height = window.innerHeight + 'px';
+        ctx.scale(2, 2);
+        width = (canvas.width = window.innerWidth);
+        height = (canvas.height = window.innerHeight);
+        origin = {
+          x: width / 2,
+          y: height / 2
+        };
+        normal = {
+          x: width / 2,
+          y: height / 2
+        };
+      }
+      class Ball {
+        constructor(x = origin.x, y = origin.y) {
+          this.x = x;
+          this.y = y;
+          this.angle = Math.PI * 2 * Math.random();
+          if (longPressed == true) {
+            this.multiplier = randBetween(14 + multiplier, 15 + multiplier);
+          } else {
+            this.multiplier = randBetween(6, 12);
+          }
+          this.vx = (this.multiplier + Math.random() * 0.5) * Math.cos(this.angle);
+          this.vy = (this.multiplier + Math.random() * 0.5) * Math.sin(this.angle);
+          this.r = randBetween(8, 12) + 3 * Math.random();
+          this.color = colours[Math.floor(Math.random() * colours.length)];
+        }
+        update() {
+          this.x += this.vx - normal.x;
+          this.y += this.vy - normal.y;
+          normal.x = -2 / window.innerWidth * Math.sin(this.angle);
+          normal.y = -2 / window.innerHeight * Math.cos(this.angle);
+          this.r -= 0.3;
+          this.vx *= 0.9;
+          this.vy *= 0.9;
+        }
+      }
+     
+      function pushBalls(count = 1, x = origin.x, y = origin.y) {
+        for (let i = 0; i < count; i++) {
+          balls.push(new Ball(x, y));
+        }
+      }
+     
+      function randBetween(min, max) {
+        return Math.floor(Math.random() * max) + min;
+      }
+     
+      function loop() {
+        ctx.fillStyle = "rgba(255, 255, 255, 0)";
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        for (let i = 0; i < balls.length; i++) {
+          let b = balls[i];
+          if (b.r < 0) continue;
+          ctx.fillStyle = b.color;
+          ctx.beginPath();
+          ctx.arc(b.x, b.y, b.r, 0, Math.PI * 2, false);
+          ctx.fill();
+          b.update();
+        }
+        if (longPressed == true) {
+          multiplier += 0.2;
+        } else if (!longPressed && multiplier >= 0) {
+          multiplier -= 0.4;
+        }
+        removeBall();
+        requestAnimationFrame(loop);
+      }
+     
+      function removeBall() {
+        for (let i = 0; i < balls.length; i++) {
+          let b = balls[i];
+          if (b.x + b.r < 0 || b.x - b.r > width || b.y + b.r < 0 || b.y - b.r > height || b.r < 0) {
+            balls.splice(i, 1);
+          }
+        }
+      }
+    }
+    clickEffect();//调用特效函数
+    </script>
+    <!--特效 结束-->
+    
+    <!--footer 开始-->
+    <footer>
+        <hr [color="#ccc"]/>
+        <p>新华社主办 版权所有：天河高级中学网络2301戴韵熙 Copyright © 2000 - 2024 XINHUANET.com All Rights Reserved.</p>
+        <P>广州市天河职业高级中学©戴韵熙编辑</P>
+    </footer>
+    <!--footer 结束-->
+</body>
+</html>

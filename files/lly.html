@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>冲天浪际</title>
+    <link rel="icon" href="../images/logo2.png" type="image/png">
+    <link rel="stylesheet" href="../css/lly.css">
+</head>
+<body>
+    <h1><a href="../files/dbrw.html">&lt返回</a></h1>
+
+    <!--lly 开始-->
+    <div id="lly">
+        <h2>雷洛伊·葛拉尼斯</h2>
+        <p>雷罗伊生于1917年的美国加州Hermosa Beach，是第一代采取冲浪生活的加州人。那时未受破坏的海滩、清澈的海水和宽阔的海洋是培养摄影师最好的温床。受到电影文化的影响，1960年代中期，雷罗伊是冲浪杂志、业界广告的运动摄影师，他在加州和夏威夷群岛占据了主导地位，结合高超的拍摄技术，抓拍到了浪手们驾浪的瞬间。而浪手们创造出的冲浪文化，也在摄影师的身上开花结果。</p>
+        <img src="../images/lly/1.gif" alt="雷洛伊·葛拉尼" title="雷洛伊·葛拉尼">
+        <img src="../images/lly/2.jpg" alt="雷洛伊·葛拉尼" title="雷洛伊·葛拉尼">
+    </div>
+    <!--lly 结束-->
+
+    <!--特效 开始-->
+  <script>
+    function clickEffect() {
+      let balls = [];
+      let longPressed = false;
+      let longPress;
+      let multiplier = 0;
+      let width, height;
+      let origin;
+      let normal;
+      let ctx;
+      const colours = ["#3F48CC", "#00A2E8", "#99D9EA", "#172DEA", "#32B1EA"];
+      const canvas = document.createElement("canvas");
+      document.body.appendChild(canvas);
+      canvas.setAttribute("style", "width: 100%; height: 100%; top: 0; left: 0; z-index: 99999; position: fixed; pointer-events: none;");
+      const pointer = document.createElement("span");
+      pointer.classList.add("pointer");
+      document.body.appendChild(pointer);
+     
+      if (canvas.getContext && window.addEventListener) {
+        ctx = canvas.getContext("2d");
+        updateSize();
+        window.addEventListener('resize', updateSize, false);
+        loop();
+        window.addEventListener("mousedown", function(e) {
+          pushBalls(randBetween(10, 20), e.clientX, e.clientY);
+          document.body.classList.add("is-pressed");
+          longPress = setTimeout(function(){
+            document.body.classList.add("is-longpress");
+            longPressed = true;
+          }, 500);
+        }, false);
+        window.addEventListener("mouseup", function(e) {
+          clearInterval(longPress);
+          if (longPressed == true) {
+            document.body.classList.remove("is-longpress");
+            pushBalls(randBetween(50 + Math.ceil(multiplier), 100 + Math.ceil(multiplier)), e.clientX, e.clientY);
+            longPressed = false;
+          }
+          document.body.classList.remove("is-pressed");
+        }, false);
+        window.addEventListener("mousemove", function(e) {
+          let x = e.clientX;
+          let y = e.clientY;
+          pointer.style.top = y + "px";
+          pointer.style.left = x + "px";
+        }, false);
+      } else {
+        console.log("canvas or addEventListener is unsupported!");
+      }
+     
+     
+      function updateSize() {
+        canvas.width = window.innerWidth * 2;
+        canvas.height = window.innerHeight * 2;
+        canvas.style.width = window.innerWidth + 'px';
+        canvas.style.height = window.innerHeight + 'px';
+        ctx.scale(2, 2);
+        width = (canvas.width = window.innerWidth);
+        height = (canvas.height = window.innerHeight);
+        origin = {
+          x: width / 2,
+          y: height / 2
+        };
+        normal = {
+          x: width / 2,
+          y: height / 2
+        };
+      }
+      class Ball {
+        constructor(x = origin.x, y = origin.y) {
+          this.x = x;
+          this.y = y;
+          this.angle = Math.PI * 2 * Math.random();
+          if (longPressed == true) {
+            this.multiplier = randBetween(14 + multiplier, 15 + multiplier);
+          } else {
+            this.multiplier = randBetween(6, 12);
+          }
+          this.vx = (this.multiplier + Math.random() * 0.5) * Math.cos(this.angle);
+          this.vy = (this.multiplier + Math.random() * 0.5) * Math.sin(this.angle);
+          this.r = randBetween(8, 12) + 3 * Math.random();
+          this.color = colours[Math.floor(Math.random() * colours.length)];
+        }
+        update() {
+          this.x += this.vx - normal.x;
+          this.y += this.vy - normal.y;
+          normal.x = -2 / window.innerWidth * Math.sin(this.angle);
+          normal.y = -2 / window.innerHeight * Math.cos(this.angle);
+          this.r -= 0.3;
+          this.vx *= 0.9;
+          this.vy *= 0.9;
+        }
+      }
+     
+      function pushBalls(count = 1, x = origin.x, y = origin.y) {
+        for (let i = 0; i < count; i++) {
+          balls.push(new Ball(x, y));
+        }
+      }
+     
+      function randBetween(min, max) {
+        return Math.floor(Math.random() * max) + min;
+      }
+     
+      function loop() {
+        ctx.fillStyle = "rgba(255, 255, 255, 0)";
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        for (let i = 0; i < balls.length; i++) {
+          let b = balls[i];
+          if (b.r < 0) continue;
+          ctx.fillStyle = b.color;
+          ctx.beginPath();
+          ctx.arc(b.x, b.y, b.r, 0, Math.PI * 2, false);
+          ctx.fill();
+          b.update();
+        }
+        if (longPressed == true) {
+          multiplier += 0.2;
+        } else if (!longPressed && multiplier >= 0) {
+          multiplier -= 0.4;
+        }
+        removeBall();
+        requestAnimationFrame(loop);
+      }
+     
+      function removeBall() {
+        for (let i = 0; i < balls.length; i++) {
+          let b = balls[i];
+          if (b.x + b.r < 0 || b.x - b.r > width || b.y + b.r < 0 || b.y - b.r > height || b.r < 0) {
+            balls.splice(i, 1);
+          }
+        }
+      }
+    }
+    clickEffect();//调用特效函数
+    </script>
+    <!--特效 结束-->
+    
+    <!--footer 开始-->
+    <footer>
+        <hr [color="#ccc"]/>
+        <p>新华社主办 版权所有：天河高级中学网络2301戴韵熙 Copyright © 2000 - 2024 XINHUANET.com All Rights Reserved.</p>
+        <P>广州市天河职业高级中学©戴韵熙编辑</P>
+    </footer>
+    <!--footer 结束-->
+</body>
+</html>

@@ -1,0 +1,137 @@
+*{
+    margin: 0;
+    background-color: #fff;
+    padding: 0;
+}
+body{
+    width: 50%;
+    margin: 0 auto;
+    font-size: 16px;
+    line-height:3;
+}
+
+/* header 开始 */
+header img{
+    margin: 0 350px;
+    height: 200px;
+}
+header nav ul{
+    height: 48px;
+    background-color: cornflowerblue;
+    border-radius: 10px;
+}
+header nav ul li{
+    font-size: 20px;
+    list-style-type: none;
+    float: left;
+    margin: 0 38px;
+    line-height: 2;
+    background-color: cornflowerblue;
+}
+header nav ul li a:link{
+    color: #fff;
+    text-decoration: none;
+    background-color: cornflowerblue;
+}
+header nav ul li a:visited{
+    color: #fff;
+    text-decoration: none;
+    background-color: cornflowerblue;
+}
+header nav ul li a:hover{
+    color:#fff;
+    cursor: url(../images/link.cur),pointer;
+}
+/* header 结束 */
+
+/* main 开始 */
+main .ls{
+    margin-top: 50px;
+}
+main .ls ul li{
+    text-indent: 4em;
+    line-height: 2;
+    list-style-type: none;
+}
+main .ls ul img{
+    width: 80%;
+    height: 400px;
+    margin: 0 90px;
+}
+main .gz img{
+    margin: 0 130px;
+}
+main .sy img{
+    margin: 0 150px;
+}
+main .ss img{
+    margin: 0 200px;
+}
+main .ss h3{
+    margin-top: 8px;
+    text-indent: 2em;
+}
+main .ddrw h2{
+    margin-bottom: 8px;
+}
+main .ddrw h3{
+    text-indent: 2em;
+}
+main .ddrw img{
+    width: 80%;
+    height: 400px;
+    margin: 30px 120px;
+}
+/* main 结束 */
+
+/* back home 开始*/
+.backhome{
+    position: fixed;
+    right: 100px;
+    bottom: 60px;
+    width: 54px;
+    height: 54px;
+}
+/* back home 结束 */
+
+/* 局部通用 开始 */
+main h2{
+    margin-top: 80px;
+    font-size: 30px;
+}
+main p{
+    line-height: 2;
+    text-indent: 4em;
+
+}
+.gengduo{
+    color: #918e8e;
+    float: right;
+}
+.gengduo a:link{
+    color: #ccc;
+    text-decoration: none;
+}
+.gengduo a:visited{
+    color: #918e8e;
+    text-decoration: none;
+}
+.gengduo a:hover{
+    color: #000;
+    text-decoration: underline;
+    cursor: url(../images/link.cur),pointer;
+}
+
+/* 局部通用 结束 */
+
+/* footer 开始 */
+footer{
+    margin-top: 80px;
+}
+footer p{
+    color: #000;
+    text-align: center;
+    font-size:12px;
+    line-height: 3;
+}
+/* footer 结束 */
